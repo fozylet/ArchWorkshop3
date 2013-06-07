@@ -1,0 +1,46 @@
+﻿** Warnings
+     The object reference [dbo].[RoomTypes].[BranchID] differs only by case from the object definition
+       [dbo].[RoomTypes].[BranchId].
+     The object reference [dbo].[RoomTypes].[BranchID] differs only by case from the object definition
+       [dbo].[RoomTypes].[BranchId].
+     The object reference [dbo].[HotelPartners].[BranchID] differs only by case from the object definition
+       [dbo].[HotelPartners].[BranchId].
+     The object reference [dbo].[sp_book_room].[@BranchId] differs only by case from the object definition
+       [dbo].[sp_book_room].[@BranchID].
+
+** Highlights
+     Tables that will be rebuilt
+       [dbo].[Reservation]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       The column [dbo].[Reservation].[RoomTypeDetailsID] is being dropped, data loss could occur.
+       The column [dbo].[Reservation].[RoomTypeID] on table [dbo].[Reservation] must be added, but the column has no default
+         value and does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue
+         you must either: add a default value to the column, mark it as allowing NULL values, or enable the generation of
+         smart-defaults as a deployment option.
+
+** User actions
+     Drop
+       [dbo].[FK_Reservation_RoomTypeAccessability] (Foreign Key)
+     Table rebuild
+       [dbo].[Reservation] (Table)
+     Create
+       [dbo].[FK_Reservation_RoomTypes] (Foreign Key)
+     Alter
+       [dbo].[sp_book_room] (Procedure)
+       [dbo].[sp_cancel_room] (Procedure)
+
+** Supporting actions
+     Drop
+       [dbo].[FK_Reservation_Customer] (Foreign Key)
+       [dbo].[FK_RoomOccupancy_Reservation] (Foreign Key)
+     Create
+       [dbo].[FK_Reservation_Customer] (Foreign Key)
+       [dbo].[FK_RoomOccupancy_Reservation] (Foreign Key)
+
+The column [dbo].[Reservation].[RoomTypeDetailsID] is being dropped, data loss could occur.
+The column [dbo].[Reservation].[RoomTypeID] on table [dbo].[Reservation] must be added, but the column has no default value and does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must either: add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+

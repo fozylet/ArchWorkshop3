@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0">
+  <Operation Name="Rename Refactor" Key="f41392c3-4b75-43c9-9f93-79c800ad6e14" ChangeDateTime="06/04/2013 11:22:40" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+    <Property Name="ElementName" Value="[dbo].[RoomTypeAvailability].[RoomTypeDetailsID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[RoomTypeAvailability]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="RoomTypeAccessID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="14a0588a-a2ed-4b5e-ab09-e451542c9150" ChangeDateTime="06/06/2013 09:40:07" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+    <Property Name="ElementName" Value="[dbo].[RoomOccupancy].[RoomTypeDetailID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[RoomOccupancy]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="RoomTypeID" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="351fca12-b73e-47aa-ab0e-89e23cfd4997" ChangeDateTime="06/07/2013 04:52:14" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+    <Property Name="ElementName" Value="[dbo].[RoomOccupancy].[IsBeingUsed]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[RoomOccupancy]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IsInUse" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d19c7ff2-4377-4f35-ab82-cf1d56eea826" ChangeDateTime="06/07/2013 04:52:22" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+    <Property Name="ElementName" Value="[dbo].[RoomOccupancy].[IsInUse]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[RoomOccupancy]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IsOccupied" />
+  </Operation>
+</Operations>

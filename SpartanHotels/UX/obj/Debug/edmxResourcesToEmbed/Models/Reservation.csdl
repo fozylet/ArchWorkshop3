@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SartansHotelsDBModel1" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="SartansHotelsDBEntities1" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Reservations" EntityType="SartansHotelsDBModel1.Reservation" />
+  </EntityContainer>
+  <EntityType Name="Reservation">
+    <Key>
+      <PropertyRef Name="ReservationID" />
+    </Key>
+    <Property Name="ReservationID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ReservationNumber" Type="Guid" Nullable="false" />
+    <Property Name="FromDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ToDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CustomerId" Type="Int32" Nullable="false" />
+    <Property Name="RoomTypeID" Type="Int32" Nullable="false" />
+    <Property Name="PaymentMode" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="PaymentSuccess" Type="Boolean" />
+    <Property Name="CancellationStatus" Type="Boolean" />
+    <Property Name="CancelledAt" Type="DateTime" Precision="3" />
+    <Property Name="CancellationRemarks" Type="String" MaxLength="2000" Unicode="true" FixedLength="false" />
+  </EntityType>
+</Schema>

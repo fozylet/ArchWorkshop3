@@ -1,0 +1,75 @@
+6/4/2013 4:06:11 PM	This log contains information about the import schema operation into project 'SartansHotelsDB' on computer 'WN7-6VNJ6Q1' by user 'Anand_Satya_Bhaskar'.
+6/4/2013 4:06:12 PM	Import of database schema has started.
+6/4/2013 4:06:23 PM	Gathering database options
+6/4/2013 4:06:23 PM	Gathering users
+6/4/2013 4:06:23 PM	Gathering roles
+6/4/2013 4:06:23 PM	Gathering application roles
+6/4/2013 4:06:23 PM	Gathering role memberships
+6/4/2013 4:06:23 PM	Gathering filegroups
+6/4/2013 4:06:23 PM	Gathering full-text catalogs
+6/4/2013 4:06:23 PM	Gathering assemblies
+6/4/2013 4:06:23 PM	Gathering certificates
+6/4/2013 4:06:23 PM	Gathering asymmetric keys
+6/4/2013 4:06:23 PM	Gathering symmetric keys
+6/4/2013 4:06:23 PM	Gathering encrypted symmetric keys
+6/4/2013 4:06:23 PM	Gathering schemas
+6/4/2013 4:06:23 PM	Gathering XML schema collections
+6/4/2013 4:06:23 PM	Gathering user-defined data types
+6/4/2013 4:06:23 PM	Gathering user-defined types
+6/4/2013 4:06:23 PM	Gathering table types
+6/4/2013 4:06:23 PM	Gathering unique keys for table types
+6/4/2013 4:06:23 PM	Gathering primary keys for table types
+6/4/2013 4:06:23 PM	Gathering check constraints for table types
+6/4/2013 4:06:23 PM	Gathering default constraints for table types
+6/4/2013 4:06:23 PM	Gathering partition functions
+6/4/2013 4:06:23 PM	Gathering partition schemes
+6/4/2013 4:06:23 PM	Gathering functions
+6/4/2013 4:06:23 PM	Gathering encrypted functions
+6/4/2013 4:06:23 PM	Gathering aggregates
+6/4/2013 4:06:23 PM	Gathering procedures
+6/4/2013 4:06:23 PM	Gathering encrypted procedures
+6/4/2013 4:06:23 PM	Gathering tables
+6/4/2013 4:06:23 PM	Gathering primary keys
+6/4/2013 4:06:23 PM	Gathering unique constraints
+6/4/2013 4:06:23 PM	Gathering foreign keys
+6/4/2013 4:06:23 PM	Gathering default constraints
+6/4/2013 4:06:23 PM	Gathering check constraints
+6/4/2013 4:06:23 PM	Gathering views
+6/4/2013 4:06:23 PM	Gathering encrypted views
+6/4/2013 4:06:23 PM	Gathering indexes
+6/4/2013 4:06:23 PM	Gathering statistics
+6/4/2013 4:06:23 PM	Gathering full-text index stoplists
+6/4/2013 4:06:23 PM	Gathering search property lists
+6/4/2013 4:06:23 PM	Gathering search properties
+6/4/2013 4:06:23 PM	Gathering full-text indexes
+6/4/2013 4:06:23 PM	Gathering column store indexes
+6/4/2013 4:06:23 PM	Gathering spatial indexes
+6/4/2013 4:06:23 PM	Gathering XML indexes
+6/4/2013 4:06:23 PM	Gathering encrypted triggers
+6/4/2013 4:06:23 PM	Gathering triggers
+6/4/2013 4:06:23 PM	Gathering encrypted and clr ddl triggers
+6/4/2013 4:06:23 PM	Gathering ddl triggers
+6/4/2013 4:06:23 PM	Gathering synonyms
+6/4/2013 4:06:23 PM	Gathering defaults
+6/4/2013 4:06:23 PM	Gathering data constraint uddt bindings
+6/4/2013 4:06:23 PM	Gathering rules
+6/4/2013 4:06:23 PM	Gathering data constraint uddt bindings
+6/4/2013 4:06:23 PM	Gathering message types
+6/4/2013 4:06:23 PM	Gathering queues
+6/4/2013 4:06:24 PM	Gathering contracts
+6/4/2013 4:06:24 PM	Gathering services
+6/4/2013 4:06:24 PM	Gathering event notifications
+6/4/2013 4:06:24 PM	Gathering remote service bindings
+6/4/2013 4:06:24 PM	Gathering broker priorities
+6/4/2013 4:06:24 PM	Gathering signatures
+6/4/2013 4:06:24 PM	Gathering data compression options
+6/4/2013 4:06:24 PM	Gathering sequence types
+6/4/2013 4:06:24 PM	Gathering extended properties
+6/4/2013 4:06:24 PM	Gathering credentials
+6/4/2013 4:06:24 PM	Gathering logins
+6/4/2013 4:06:24 PM	Gathering server audits
+6/4/2013 4:06:25 PM	Scanning project for duplicate elements
+6/4/2013 4:06:25 PM	Finished duplicate element processing
+6/4/2013 4:06:26 PM	Finished importing database.
+6/4/2013 4:06:26 PM	A summary of the import was saved to the following location: E:\01-Projects\SpartanHotels\SartansHotelsDB\Import Schema Logs\SartansHotelsDB_20130604103611.log
+6/4/2013 4:06:26 PM	Click Finish to continue...

@@ -1,0 +1,23 @@
+﻿** Warnings
+     The object reference [dbo].[RoomTypes].[BranchID] differs only by case from the object definition
+       [dbo].[RoomTypes].[BranchId].
+     The object reference [dbo].[RoomTypes].[BranchID] differs only by case from the object definition
+       [dbo].[RoomTypes].[BranchId].
+     The object reference [dbo].[HotelPartners].[BranchID] differs only by case from the object definition
+       [dbo].[HotelPartners].[BranchId].
+     The object reference [dbo].[sp_book_room].[@BranchId] differs only by case from the object definition
+       [dbo].[sp_book_room].[@BranchID].
+
+** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+
+** Supporting actions

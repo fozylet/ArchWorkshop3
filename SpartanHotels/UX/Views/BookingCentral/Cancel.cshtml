@@ -1,0 +1,36 @@
+﻿@model UX.Models.BookingCancellation
+
+@{
+    ViewBag.Title = "Booking Cancellation";
+}
+
+<h2>BookingResult</h2>
+
+<fieldset>
+    <legend>BookingConfirmation</legend>
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.ReservationId) :
+             @Html.DisplayFor(model => model.ReservationId)
+    </div>
+    <div class="display-field">
+    </div>
+</fieldset>
+<p>
+    Done! We hope you will stay with us sometime soon in!
+    <br />
+    @if (Model.IsRefunded)
+    {
+        <p>
+            You are lucky. We will refund your money. Check with your credit card vendor next
+            week!
+        </p>
+        <br />
+    }
+    else
+    {
+        <p>Aha!.. you know you will not get a penny back, ya?</p>
+        <br />
+    }
+
+    @Html.ActionLink("Back to List", "Reservations")
+</p>

@@ -1,0 +1,122 @@
+﻿@model UX.Models.InitialBookingViewModel
+
+@{
+    ViewBag.Title = Model.Title;
+    Layout = "~/Views/Shared/_BootstrapLayout.basic.cshtml";
+}
+
+      <div class="hero-unit">
+        <h1>@Model.Splash</h1>
+        <p>@Model.BookingIntroduction</p>        
+        <div class="form-inline" >
+             <select data-bind="options: NumberOfAdults, optionsText: 'name', value: selectedNumberAdult, optionsValue: 'name'">
+                 <option data-bind="text: name"/> 
+            </select>
+            <select data-bind="options: cities, optionsText : 'cityName', value: cityId, optionsValue:'cityId'">
+                <option data-bind="text: Name"/>                
+            </select>
+
+            <input type="date" class="input-medium" placeholder="Check-in Date" data-bind="value: checkin"/>
+            <div class="input-append">
+                <input type="date" class="input-medium" placeholder="Check-out Date" data-bind="value: checkout"/>
+                <button class="btn" type="button" data-bind="click: findRooms">Go!</button>
+            </div>
+        </div>
+      </div>
+
+<!--WIP:  NEED TO FIX HERE 
+1. we will give absolute path for now.. 
+    need to fix it for relative path
+
+    2. Default action vs. calling index.cshtml are different! fix it..
+    
+-->
+    <!-- ko foreach: rows -->
+    <div id="status" class="row" data-bind="foreach: rooms">
+        <div class="span4">
+          <h2 data-bind="text: name"></h2>
+          <p data-bind="text: description"></p>
+          <p><a class="btn btn-primary" data-bind="click: $root.bookRoom ">Book it! &raquo;</a></p>
+        </div>  
+     </div>
+    
+    <!-- /ko -->
+
+@section Scripts
+{
+    <script type="text/javascript">
+        var RoomType = function (name, description, id) {
+            var self = this;
+            self.name = name;
+            self.description = description;
+            self.id = id;
+        };
+
+        var NumberOfAdults = ko.observableArray([{ name: "1" }, { name: "2" }, { name: "3" }, { name: "4" }, { name: "5" }]);
+
+        var City = function (name, description, id) {
+            var self = this;
+            self.cityName = name;
+            self.description = description;
+            self.cityId = id;
+        };
+
+        var RoomTypeRow = function (roomTypes) {
+            var self = this;
+            self.rooms = ko.observableArray(roomTypes);
+        };
+
+        var KoViewModel = function () {
+            var self = this;
+            self.rows = ko.observableArray();
+            self.selectedNumberAdult = ko.observable();            
+            self.cityId = ko.observable();
+            self.checkin = ko.observable();
+            self.checkout = ko.observable();
+            self.cities = ko.observableArray();
+            
+
+            self.findRooms = function () {
+                $.getJSON("./BookingCentral/GetRooms", { CityId:self.cityId(), CheckinDate:self.checkin(), CheckoutDate:self.checkout(), NumberOfAdults: self.selectedNumberAdult(), GuestId:"UNKNOWN", IncludePartners:"false" }, function (searchResult) {
+                    var roomTypes = new Array();
+                    self.rows.removeAll();
+                    for (var index = 0; index < searchResult.length; index++) {
+                        roomTypes[index] = new RoomType(searchResult[index].Name, searchResult[index].Description, searchResult[index].Id);
+                    }
+                    self.rows.push(new RoomTypeRow(roomTypes));
+                });
+
+            };
+
+            self.findCities = function () {
+                self.cities.removeAll();
+                $.getJSON("./BookingCentral/GetCities", "", function (searchResult) {
+
+                    for (var index = 0; index < searchResult.length; index++) {
+                        
+                        self.cities.push(new City(searchResult[index].Name, searchResult[index].Description, searchResult[index].Id));
+
+                    }
+
+                });
+            };
+            
+
+            self.bookRoom = function (roomtype) {
+                
+                $.getJSON("./BookingCentral/Book", { CityId: self.cityId(), CheckinDate: self.checkin(), CheckoutDate: self.checkout(), NumberOfAdults: self.selectedNumberAdult(), GuestId: "UNKNOWN", IncludePartners: "false", RoomTypeId: roomtype.id }, function (data) {
+                    $("#status").html("Congratulations :) Your Confirmation Details are in your email. ref # is " + data.BookingId);
+                });
+            };
+
+            self.findCities();
+        };
+
+        //var showSuccess = function (data) {
+        //    $("#status").html("Congratulations :) Your Confirmation Details are in your email. ref # is " + data.BookingId);
+        //};
+        var bookingModel = new KoViewModel();
+        
+        ko.applyBindings(bookingModel);
+    </script>
+}

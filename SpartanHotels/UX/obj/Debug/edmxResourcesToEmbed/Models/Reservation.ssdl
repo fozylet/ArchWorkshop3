@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SartansHotelsDBModel1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="SartansHotelsDBModel1StoreContainer">
+    <EntitySet Name="Reservation" EntityType="SartansHotelsDBModel1.Store.Reservation" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="Reservation">
+    <Key>
+      <PropertyRef Name="ReservationID" />
+    </Key>
+    <Property Name="ReservationID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ReservationNumber" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="FromDate" Type="datetime" Nullable="false" />
+    <Property Name="ToDate" Type="datetime" Nullable="false" />
+    <Property Name="CustomerId" Type="int" Nullable="false" />
+    <Property Name="RoomTypeID" Type="int" Nullable="false" />
+    <Property Name="PaymentMode" Type="nvarchar" MaxLength="50" />
+    <Property Name="PaymentSuccess" Type="bit" />
+    <Property Name="CancellationStatus" Type="bit" />
+    <Property Name="CancelledAt" Type="datetime" />
+    <Property Name="CancellationRemarks" Type="nvarchar" MaxLength="2000" />
+  </EntityType>
+</Schema>

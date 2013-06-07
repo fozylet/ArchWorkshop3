@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9e3d9fab19c944b9a244686c939c010a" Name="Diagram1">
+        <EntityTypeShape EntityType="SpartanHotelsModel.Customer" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SpartanHotelsModel.HotelBranch" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SpartanHotelsModel.HotelPartner" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SpartanHotelsModel.RoomOccupancy" Width="1.5" PointX="7.5" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SpartanHotelsModel.RoomTypeAccessability" Width="1.5" PointX="5.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SpartanHotelsModel.RoomTypeAvailability" Width="1.5" PointX="7.5" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SpartanHotelsModel.RoomTypePrice" Width="1.5" PointX="5.25" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SpartanHotelsModel.RoomType" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <AssociationConnector Association="SpartanHotelsModel.FK_HotelPartners_HotelBranches" ManuallyRouted="false" />
+        <AssociationConnector Association="SpartanHotelsModel.FK_RoomTypes_HotelBranches" ManuallyRouted="false" />
+        <AssociationConnector Association="SpartanHotelsModel.FK_Rooms_RoomTypeDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="SpartanHotelsModel.FK_RoomTypeAvailability_RoomTypeDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="SpartanHotelsModel.FK_RoomTypeDetails_RoomTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="SpartanHotelsModel.FK_RoomTypePrice_RoomTypes" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

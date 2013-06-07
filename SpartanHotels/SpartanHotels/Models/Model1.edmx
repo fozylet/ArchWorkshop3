@@ -1,0 +1,537 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SpartanHotelsModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="SpartanHotelsModelStoreContainer">
+          <EntitySet Name="Customer" EntityType="SpartanHotelsModel.Store.Customer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="HotelBranches" EntityType="SpartanHotelsModel.Store.HotelBranches" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="HotelPartners" EntityType="SpartanHotelsModel.Store.HotelPartners" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RoomOccupancy" EntityType="SpartanHotelsModel.Store.RoomOccupancy" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RoomTypeAccessability" EntityType="SpartanHotelsModel.Store.RoomTypeAccessability" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RoomTypeAvailability" EntityType="SpartanHotelsModel.Store.RoomTypeAvailability" store:Type="Tables" store:Schema="dbo" store:Name="RoomTypeAvailability">
+            <DefiningQuery>SELECT 
+      [RoomTypeAvailability].[ID] AS [ID], 
+      [RoomTypeAvailability].[RoomTypeDetailsID] AS [RoomTypeDetailsID], 
+      [RoomTypeAvailability].[ForDate] AS [ForDate], 
+      [RoomTypeAvailability].[NoOfRoomBlocked] AS [NoOfRoomBlocked]
+      FROM [dbo].[RoomTypeAvailability] AS [RoomTypeAvailability]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="RoomTypePrice" EntityType="SpartanHotelsModel.Store.RoomTypePrice" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RoomTypes" EntityType="SpartanHotelsModel.Store.RoomTypes" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_HotelPartners_HotelBranches" Association="SpartanHotelsModel.Store.FK_HotelPartners_HotelBranches">
+            <End Role="HotelBranches" EntitySet="HotelBranches" />
+            <End Role="HotelPartners" EntitySet="HotelPartners" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rooms_RoomTypeDetails" Association="SpartanHotelsModel.Store.FK_Rooms_RoomTypeDetails">
+            <End Role="RoomTypeAccessability" EntitySet="RoomTypeAccessability" />
+            <End Role="RoomOccupancy" EntitySet="RoomOccupancy" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoomTypeAvailability_RoomTypeDetails" Association="SpartanHotelsModel.Store.FK_RoomTypeAvailability_RoomTypeDetails">
+            <End Role="RoomTypeAccessability" EntitySet="RoomTypeAccessability" />
+            <End Role="RoomTypeAvailability" EntitySet="RoomTypeAvailability" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoomTypeDetails_RoomTypes" Association="SpartanHotelsModel.Store.FK_RoomTypeDetails_RoomTypes">
+            <End Role="RoomTypes" EntitySet="RoomTypes" />
+            <End Role="RoomTypeAccessability" EntitySet="RoomTypeAccessability" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoomTypePrice_RoomTypes" Association="SpartanHotelsModel.Store.FK_RoomTypePrice_RoomTypes">
+            <End Role="RoomTypes" EntitySet="RoomTypes" />
+            <End Role="RoomTypePrice" EntitySet="RoomTypePrice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoomTypes_HotelBranches" Association="SpartanHotelsModel.Store.FK_RoomTypes_HotelBranches">
+            <End Role="HotelBranches" EntitySet="HotelBranches" />
+            <End Role="RoomTypes" EntitySet="RoomTypes" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="int" Nullable="false" />
+          <Property Name="CustomerName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ContactNumber" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="HotelBranches">
+          <Key>
+            <PropertyRef Name="BranchId" />
+          </Key>
+          <Property Name="BranchId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="Details" Type="nvarchar" MaxLength="3000" />
+          <Property Name="City" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="HotelPartners">
+          <Key>
+            <PropertyRef Name="PartnerID" />
+          </Key>
+          <Property Name="PartnerID" Type="int" Nullable="false" />
+          <Property Name="BranchId" Type="int" Nullable="false" />
+          <Property Name="URL" Type="nvarchar" MaxLength="300" />
+          <Property Name="Details" Type="nvarchar" MaxLength="3000" />
+          <Property Name="CouponCode" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RoomOccupancy">
+          <Key>
+            <PropertyRef Name="RoomNumber" />
+            <PropertyRef Name="ForDate" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="RoomNumber" Type="int" Nullable="false" />
+          <Property Name="ForDate" Type="datetime" Nullable="false" />
+          <Property Name="RoomTypeDetailID" Type="int" Nullable="false" />
+          <Property Name="OccupiedAt" Type="datetime" />
+          <Property Name="Remarks" Type="nchar" MaxLength="10" />
+          <Property Name="ReservationID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RoomTypeAccessability">
+          <Key>
+            <PropertyRef Name="RoomTypeAccessabilityID" />
+          </Key>
+          <Property Name="RoomTypeAccessabilityID" Type="int" Nullable="false" />
+          <Property Name="RoomTypeID" Type="int" Nullable="false" />
+          <Property Name="NoOfRooms" Type="int" Nullable="false" />
+          <Property Name="FromDate" Type="datetime" Nullable="false" />
+          <Property Name="ToDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'SpartanHotels.dbo.RoomTypeAvailability' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="RoomTypeAvailability">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="RoomTypeDetailsID" />
+            <PropertyRef Name="ForDate" />
+            <PropertyRef Name="NoOfRoomBlocked" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="RoomTypeDetailsID" Type="int" Nullable="false" />
+          <Property Name="ForDate" Type="datetime" Nullable="false" />
+          <Property Name="NoOfRoomBlocked" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RoomTypePrice">
+          <Key>
+            <PropertyRef Name="RoomTypePriceId" />
+          </Key>
+          <Property Name="RoomTypePriceId" Type="int" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="FromDate" Type="datetime" Nullable="false" />
+          <Property Name="ToDate" Type="datetime" Nullable="false" />
+          <Property Name="RoomTypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RoomTypes">
+          <Key>
+            <PropertyRef Name="RoomTypeID" />
+          </Key>
+          <Property Name="RoomTypeID" Type="int" Nullable="false" />
+          <Property Name="TypeName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="BranchId" Type="int" />
+          <Property Name="Details" Type="nvarchar" MaxLength="2000" />
+          <Property Name="Facilities" Type="nvarchar" MaxLength="2000" />
+          <Property Name="MaxAdults" Type="int" />
+          <Property Name="MaxChildren" Type="int" />
+        </EntityType>
+        <Association Name="FK_HotelPartners_HotelBranches">
+          <End Role="HotelBranches" Type="SpartanHotelsModel.Store.HotelBranches" Multiplicity="1" />
+          <End Role="HotelPartners" Type="SpartanHotelsModel.Store.HotelPartners" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelBranches">
+              <PropertyRef Name="BranchId" />
+            </Principal>
+            <Dependent Role="HotelPartners">
+              <PropertyRef Name="BranchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rooms_RoomTypeDetails">
+          <End Role="RoomTypeAccessability" Type="SpartanHotelsModel.Store.RoomTypeAccessability" Multiplicity="1" />
+          <End Role="RoomOccupancy" Type="SpartanHotelsModel.Store.RoomOccupancy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomTypeAccessability">
+              <PropertyRef Name="RoomTypeAccessabilityID" />
+            </Principal>
+            <Dependent Role="RoomOccupancy">
+              <PropertyRef Name="RoomTypeDetailID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoomTypeAvailability_RoomTypeDetails">
+          <End Role="RoomTypeAccessability" Type="SpartanHotelsModel.Store.RoomTypeAccessability" Multiplicity="1" />
+          <End Role="RoomTypeAvailability" Type="SpartanHotelsModel.Store.RoomTypeAvailability" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomTypeAccessability">
+              <PropertyRef Name="RoomTypeAccessabilityID" />
+            </Principal>
+            <Dependent Role="RoomTypeAvailability">
+              <PropertyRef Name="RoomTypeDetailsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoomTypeDetails_RoomTypes">
+          <End Role="RoomTypes" Type="SpartanHotelsModel.Store.RoomTypes" Multiplicity="1" />
+          <End Role="RoomTypeAccessability" Type="SpartanHotelsModel.Store.RoomTypeAccessability" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomTypes">
+              <PropertyRef Name="RoomTypeID" />
+            </Principal>
+            <Dependent Role="RoomTypeAccessability">
+              <PropertyRef Name="RoomTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoomTypePrice_RoomTypes">
+          <End Role="RoomTypes" Type="SpartanHotelsModel.Store.RoomTypes" Multiplicity="1" />
+          <End Role="RoomTypePrice" Type="SpartanHotelsModel.Store.RoomTypePrice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomTypes">
+              <PropertyRef Name="RoomTypeID" />
+            </Principal>
+            <Dependent Role="RoomTypePrice">
+              <PropertyRef Name="RoomTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoomTypes_HotelBranches">
+          <End Role="HotelBranches" Type="SpartanHotelsModel.Store.HotelBranches" Multiplicity="0..1" />
+          <End Role="RoomTypes" Type="SpartanHotelsModel.Store.RoomTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelBranches">
+              <PropertyRef Name="BranchId" />
+            </Principal>
+            <Dependent Role="RoomTypes">
+              <PropertyRef Name="BranchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SpartanHotelsModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SpartanHotelsEntities1" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Customers" EntityType="SpartanHotelsModel.Customer" />
+          <EntitySet Name="HotelBranches" EntityType="SpartanHotelsModel.HotelBranch" />
+          <EntitySet Name="HotelPartners" EntityType="SpartanHotelsModel.HotelPartner" />
+          <EntitySet Name="RoomOccupancies" EntityType="SpartanHotelsModel.RoomOccupancy" />
+          <EntitySet Name="RoomTypeAccessabilities" EntityType="SpartanHotelsModel.RoomTypeAccessability" />
+          <EntitySet Name="RoomTypeAvailabilities" EntityType="SpartanHotelsModel.RoomTypeAvailability" />
+          <EntitySet Name="RoomTypePrices" EntityType="SpartanHotelsModel.RoomTypePrice" />
+          <EntitySet Name="RoomTypes" EntityType="SpartanHotelsModel.RoomType" />
+          <AssociationSet Name="FK_HotelPartners_HotelBranches" Association="SpartanHotelsModel.FK_HotelPartners_HotelBranches">
+            <End Role="HotelBranches" EntitySet="HotelBranches" />
+            <End Role="HotelPartners" EntitySet="HotelPartners" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoomTypes_HotelBranches" Association="SpartanHotelsModel.FK_RoomTypes_HotelBranches">
+            <End Role="HotelBranches" EntitySet="HotelBranches" />
+            <End Role="RoomTypes" EntitySet="RoomTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rooms_RoomTypeDetails" Association="SpartanHotelsModel.FK_Rooms_RoomTypeDetails">
+            <End Role="RoomTypeAccessability" EntitySet="RoomTypeAccessabilities" />
+            <End Role="RoomOccupancy" EntitySet="RoomOccupancies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoomTypeAvailability_RoomTypeDetails" Association="SpartanHotelsModel.FK_RoomTypeAvailability_RoomTypeDetails">
+            <End Role="RoomTypeAccessability" EntitySet="RoomTypeAccessabilities" />
+            <End Role="RoomTypeAvailability" EntitySet="RoomTypeAvailabilities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoomTypeDetails_RoomTypes" Association="SpartanHotelsModel.FK_RoomTypeDetails_RoomTypes">
+            <End Role="RoomTypes" EntitySet="RoomTypes" />
+            <End Role="RoomTypeAccessability" EntitySet="RoomTypeAccessabilities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoomTypePrice_RoomTypes" Association="SpartanHotelsModel.FK_RoomTypePrice_RoomTypes">
+            <End Role="RoomTypes" EntitySet="RoomTypes" />
+            <End Role="RoomTypePrice" EntitySet="RoomTypePrices" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="Int32" Nullable="false" />
+          <Property Name="CustomerName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Address" Type="String" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <Property Name="ContactNumber" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="HotelBranch">
+          <Key>
+            <PropertyRef Name="BranchId" />
+          </Key>
+          <Property Name="BranchId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="Details" Type="String" MaxLength="3000" Unicode="true" FixedLength="false" />
+          <Property Name="City" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Address" Type="String" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="HotelPartners" Relationship="SpartanHotelsModel.FK_HotelPartners_HotelBranches" FromRole="HotelBranches" ToRole="HotelPartners" />
+          <NavigationProperty Name="RoomTypes" Relationship="SpartanHotelsModel.FK_RoomTypes_HotelBranches" FromRole="HotelBranches" ToRole="RoomTypes" />
+        </EntityType>
+        <EntityType Name="HotelPartner">
+          <Key>
+            <PropertyRef Name="PartnerID" />
+          </Key>
+          <Property Name="PartnerID" Type="Int32" Nullable="false" />
+          <Property Name="BranchId" Type="Int32" Nullable="false" />
+          <Property Name="URL" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
+          <Property Name="Details" Type="String" MaxLength="3000" Unicode="true" FixedLength="false" />
+          <Property Name="CouponCode" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="HotelBranch" Relationship="SpartanHotelsModel.FK_HotelPartners_HotelBranches" FromRole="HotelPartners" ToRole="HotelBranches" />
+        </EntityType>
+        <EntityType Name="RoomOccupancy">
+          <Key>
+            <PropertyRef Name="RoomNumber" />
+            <PropertyRef Name="ForDate" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="RoomNumber" Type="Int32" Nullable="false" />
+          <Property Name="ForDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RoomTypeAccessabilityID" Type="Int32" Nullable="false" />
+          <Property Name="OccupiedAt" Type="DateTime" Precision="3" />
+          <Property Name="Remarks" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+          <Property Name="ReservationID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RoomTypeAccessability" Relationship="SpartanHotelsModel.FK_Rooms_RoomTypeDetails" FromRole="RoomOccupancy" ToRole="RoomTypeAccessability" />
+        </EntityType>
+        <EntityType Name="RoomTypeAccessability">
+          <Key>
+            <PropertyRef Name="RoomTypeAccessabilityID" />
+          </Key>
+          <Property Name="RoomTypeAccessabilityID" Type="Int32" Nullable="false" />
+          <Property Name="RoomTypeID" Type="Int32" Nullable="false" />
+          <Property Name="NoOfRooms" Type="Int32" Nullable="false" />
+          <Property Name="FromDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ToDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="RoomOccupancies" Relationship="SpartanHotelsModel.FK_Rooms_RoomTypeDetails" FromRole="RoomTypeAccessability" ToRole="RoomOccupancy" />
+          <NavigationProperty Name="RoomTypeAvailabilities" Relationship="SpartanHotelsModel.FK_RoomTypeAvailability_RoomTypeDetails" FromRole="RoomTypeAccessability" ToRole="RoomTypeAvailability" />
+          <NavigationProperty Name="RoomType" Relationship="SpartanHotelsModel.FK_RoomTypeDetails_RoomTypes" FromRole="RoomTypeAccessability" ToRole="RoomTypes" />
+        </EntityType>
+        <EntityType Name="RoomTypeAvailability">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="RoomTypeAccessabilityID" />
+            <PropertyRef Name="ForDate" />
+            <PropertyRef Name="NoOfRoomBlocked" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="RoomTypeAccessabilityID" Type="Int32" Nullable="false" />
+          <Property Name="ForDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NoOfRoomBlocked" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RoomTypeAccessability" Relationship="SpartanHotelsModel.FK_RoomTypeAvailability_RoomTypeDetails" FromRole="RoomTypeAvailability" ToRole="RoomTypeAccessability" />
+        </EntityType>
+        <EntityType Name="RoomTypePrice">
+          <Key>
+            <PropertyRef Name="RoomTypePriceId" />
+          </Key>
+          <Property Name="RoomTypePriceId" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="FromDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ToDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RoomTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RoomType" Relationship="SpartanHotelsModel.FK_RoomTypePrice_RoomTypes" FromRole="RoomTypePrice" ToRole="RoomTypes" />
+        </EntityType>
+        <EntityType Name="RoomType">
+          <Key>
+            <PropertyRef Name="RoomTypeID" />
+          </Key>
+          <Property Name="RoomTypeID" Type="Int32" Nullable="false" />
+          <Property Name="TypeName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="BranchId" Type="Int32" />
+          <Property Name="Details" Type="String" MaxLength="2000" Unicode="true" FixedLength="false" />
+          <Property Name="Facilities" Type="String" MaxLength="2000" Unicode="true" FixedLength="false" />
+          <Property Name="MaxAdults" Type="Int32" />
+          <Property Name="MaxChildren" Type="Int32" />
+          <NavigationProperty Name="HotelBranch" Relationship="SpartanHotelsModel.FK_RoomTypes_HotelBranches" FromRole="RoomTypes" ToRole="HotelBranches" />
+          <NavigationProperty Name="RoomTypeAccessabilities" Relationship="SpartanHotelsModel.FK_RoomTypeDetails_RoomTypes" FromRole="RoomTypes" ToRole="RoomTypeAccessability" />
+          <NavigationProperty Name="RoomTypePrices" Relationship="SpartanHotelsModel.FK_RoomTypePrice_RoomTypes" FromRole="RoomTypes" ToRole="RoomTypePrice" />
+        </EntityType>
+        <Association Name="FK_HotelPartners_HotelBranches">
+          <End Role="HotelBranches" Type="SpartanHotelsModel.HotelBranch" Multiplicity="1" />
+          <End Role="HotelPartners" Type="SpartanHotelsModel.HotelPartner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelBranches">
+              <PropertyRef Name="BranchId" />
+            </Principal>
+            <Dependent Role="HotelPartners">
+              <PropertyRef Name="BranchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoomTypes_HotelBranches">
+          <End Role="HotelBranches" Type="SpartanHotelsModel.HotelBranch" Multiplicity="0..1" />
+          <End Role="RoomTypes" Type="SpartanHotelsModel.RoomType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HotelBranches">
+              <PropertyRef Name="BranchId" />
+            </Principal>
+            <Dependent Role="RoomTypes">
+              <PropertyRef Name="BranchId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rooms_RoomTypeDetails">
+          <End Role="RoomTypeAccessability" Type="SpartanHotelsModel.RoomTypeAccessability" Multiplicity="1" />
+          <End Role="RoomOccupancy" Type="SpartanHotelsModel.RoomOccupancy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomTypeAccessability">
+              <PropertyRef Name="RoomTypeAccessabilityID" />
+            </Principal>
+            <Dependent Role="RoomOccupancy">
+              <PropertyRef Name="RoomTypeAccessabilityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoomTypeAvailability_RoomTypeDetails">
+          <End Role="RoomTypeAccessability" Type="SpartanHotelsModel.RoomTypeAccessability" Multiplicity="1" />
+          <End Role="RoomTypeAvailability" Type="SpartanHotelsModel.RoomTypeAvailability" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomTypeAccessability">
+              <PropertyRef Name="RoomTypeAccessabilityID" />
+            </Principal>
+            <Dependent Role="RoomTypeAvailability">
+              <PropertyRef Name="RoomTypeAccessabilityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoomTypeDetails_RoomTypes">
+          <End Role="RoomTypes" Type="SpartanHotelsModel.RoomType" Multiplicity="1" />
+          <End Role="RoomTypeAccessability" Type="SpartanHotelsModel.RoomTypeAccessability" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomTypes">
+              <PropertyRef Name="RoomTypeID" />
+            </Principal>
+            <Dependent Role="RoomTypeAccessability">
+              <PropertyRef Name="RoomTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoomTypePrice_RoomTypes">
+          <End Role="RoomTypes" Type="SpartanHotelsModel.RoomType" Multiplicity="1" />
+          <End Role="RoomTypePrice" Type="SpartanHotelsModel.RoomTypePrice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RoomTypes">
+              <PropertyRef Name="RoomTypeID" />
+            </Principal>
+            <Dependent Role="RoomTypePrice">
+              <PropertyRef Name="RoomTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SpartanHotelsModelStoreContainer" CdmEntityContainer="SpartanHotelsEntities1">
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="SpartanHotelsModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelBranches">
+            <EntityTypeMapping TypeName="SpartanHotelsModel.HotelBranch">
+              <MappingFragment StoreEntitySet="HotelBranches">
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HotelPartners">
+            <EntityTypeMapping TypeName="SpartanHotelsModel.HotelPartner">
+              <MappingFragment StoreEntitySet="HotelPartners">
+                <ScalarProperty Name="PartnerID" ColumnName="PartnerID" />
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="CouponCode" ColumnName="CouponCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomOccupancies">
+            <EntityTypeMapping TypeName="SpartanHotelsModel.RoomOccupancy">
+              <MappingFragment StoreEntitySet="RoomOccupancy">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RoomNumber" ColumnName="RoomNumber" />
+                <ScalarProperty Name="ForDate" ColumnName="ForDate" />
+                <ScalarProperty Name="RoomTypeAccessabilityID" ColumnName="RoomTypeDetailID" />
+                <ScalarProperty Name="OccupiedAt" ColumnName="OccupiedAt" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="ReservationID" ColumnName="ReservationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomTypeAccessabilities">
+            <EntityTypeMapping TypeName="SpartanHotelsModel.RoomTypeAccessability">
+              <MappingFragment StoreEntitySet="RoomTypeAccessability">
+                <ScalarProperty Name="RoomTypeAccessabilityID" ColumnName="RoomTypeAccessabilityID" />
+                <ScalarProperty Name="RoomTypeID" ColumnName="RoomTypeID" />
+                <ScalarProperty Name="NoOfRooms" ColumnName="NoOfRooms" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomTypeAvailabilities">
+            <EntityTypeMapping TypeName="SpartanHotelsModel.RoomTypeAvailability">
+              <MappingFragment StoreEntitySet="RoomTypeAvailability">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RoomTypeAccessabilityID" ColumnName="RoomTypeDetailsID" />
+                <ScalarProperty Name="ForDate" ColumnName="ForDate" />
+                <ScalarProperty Name="NoOfRoomBlocked" ColumnName="NoOfRoomBlocked" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomTypePrices">
+            <EntityTypeMapping TypeName="SpartanHotelsModel.RoomTypePrice">
+              <MappingFragment StoreEntitySet="RoomTypePrice">
+                <ScalarProperty Name="RoomTypePriceId" ColumnName="RoomTypePriceId" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+                <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="RoomTypeId" ColumnName="RoomTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RoomTypes">
+            <EntityTypeMapping TypeName="SpartanHotelsModel.RoomType">
+              <MappingFragment StoreEntitySet="RoomTypes">
+                <ScalarProperty Name="RoomTypeID" ColumnName="RoomTypeID" />
+                <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+                <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="Facilities" ColumnName="Facilities" />
+                <ScalarProperty Name="MaxAdults" ColumnName="MaxAdults" />
+                <ScalarProperty Name="MaxChildren" ColumnName="MaxChildren" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

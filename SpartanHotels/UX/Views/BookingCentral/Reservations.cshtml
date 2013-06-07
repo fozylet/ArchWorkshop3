@@ -1,0 +1,67 @@
+﻿@model IEnumerable<UX.Models.Reservation>
+
+@{
+    ViewBag.Title = "Reservation";
+}
+
+<h2>Index</h2>
+
+@if (Model.Where(item => !item.CancellationStatus && item.FromDate.AddDays(1) >= DateTime.Now).Count() == 0)
+{
+    <p>Sorry! No bookings available.</p>
+}
+else
+{
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ReservationNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FromDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ToDate)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.PaymentMode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaymentSuccess)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.Where(item => !item.CancellationStatus && item.FromDate.AddDays(1) >= DateTime.Now))
+        {
+            
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReservationNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FromDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ToDate)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaymentMode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaymentSuccess)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Cancel", "Cancel", new UX.Models.BookingCancellation { ReservationId = item.ReservationNumber.ToString(), IsRefunded = (item.FromDate > DateTime.Now.AddDays(1)) })
+
+
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+<p><a class="btn" href="/Home">Home&raquo;</a></p>

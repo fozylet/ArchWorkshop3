@@ -1,0 +1,37 @@
+﻿** Warnings
+     The object reference [dbo].[RoomTypes].[BranchID] differs only by case from the object definition
+       [dbo].[RoomTypes].[BranchId].
+     The object reference [dbo].[RoomTypes].[BranchID] differs only by case from the object definition
+       [dbo].[RoomTypes].[BranchId].
+     The object reference [dbo].[HotelPartners].[BranchID] differs only by case from the object definition
+       [dbo].[HotelPartners].[BranchId].
+
+** Highlights
+     Tables that will be rebuilt
+       [dbo].[RoomTypeAvailability]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       The column [dbo].[RoomTypeAvailability].[RoomTypeID] on table [dbo].[RoomTypeAvailability] must be added, but the column
+         has no default value and does not allow NULL values. If the table contains data, the ALTER script will not work. To
+         avoid this issue you must either: add a default value to the column, mark it as allowing NULL values, or enable the
+         generation of smart-defaults as a deployment option.
+
+** User actions
+     Table rebuild
+       [dbo].[RoomTypeAvailability] (Table)
+     Create
+       [dbo].[FK_RoomTypeAvailability_RoomType] (Foreign Key)
+     Alter
+       [dbo].[sp_get_Availability] (Procedure)
+
+** Supporting actions
+     Drop
+       [dbo].[FK_RoomTypeAvailability_RoomTypeDetails] (Foreign Key)
+     Create
+       [dbo].[FK_RoomTypeAvailability_RoomTypeDetails] (Foreign Key)
+
+The column [dbo].[RoomTypeAvailability].[RoomTypeID] on table [dbo].[RoomTypeAvailability] must be added, but the column has no default value and does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must either: add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+

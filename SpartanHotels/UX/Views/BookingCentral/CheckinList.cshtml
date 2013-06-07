@@ -1,0 +1,73 @@
+﻿@model IEnumerable<UX.Models.Reservation>
+
+@{
+    ViewBag.Title = "Check in";
+}
+
+<h2>Active Reservations</h2>
+
+@if (Model.Where(item => !item.CancellationStatus && item.FromDate.AddDays(1) >= DateTime.Now).Count() == 0)
+{
+    <p>Sorry! No bookings available.</p>
+}
+else
+{
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ReservationNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FromDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ToDate)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.PaymentMode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaymentSuccess)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerId)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.Where(item => !item.CancellationStatus && item.FromDate.AddDays(1) >= DateTime.Now).OrderBy(item => item.FromDate))
+        {
+            
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReservationNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FromDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ToDate)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaymentMode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaymentSuccess)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerId)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Check In", "CheckIn", new UX.Models.CheckinDetails { ReservationId = item.ReservationNumber.ToString(), IsUpgraded = true, RoomNumber = 101 })
+
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+<p><a class="btn" href="/Home">Home&raquo;</a></p>

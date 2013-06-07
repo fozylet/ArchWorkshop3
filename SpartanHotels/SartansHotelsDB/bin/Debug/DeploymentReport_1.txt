@@ -1,0 +1,24 @@
+﻿** Warnings
+     The object reference [dbo].[RoomTypeAvailability].[FORDATE] differs only by case from the object definition
+       [dbo].[RoomTypeAvailability].[ForDate].
+     The object reference [dbo].[RoomTypes].[BranchID] differs only by case from the object definition
+       [dbo].[RoomTypes].[BranchId].
+     The object reference [dbo].[HotelPartners].[BranchID] differs only by case from the object definition
+       [dbo].[HotelPartners].[BranchId].
+
+** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[Configurations] (Table)
+       [dbo].[sp_get_Availability] (Procedure)
+
+** Supporting actions

@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SpartanHotelsModelStoreContainer" CdmEntityContainer="SpartanHotelsEntities1">
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="SpartanHotelsModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HotelBranches">
+      <EntityTypeMapping TypeName="SpartanHotelsModel.HotelBranch">
+        <MappingFragment StoreEntitySet="HotelBranches">
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HotelPartners">
+      <EntityTypeMapping TypeName="SpartanHotelsModel.HotelPartner">
+        <MappingFragment StoreEntitySet="HotelPartners">
+          <ScalarProperty Name="PartnerID" ColumnName="PartnerID" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="CouponCode" ColumnName="CouponCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoomOccupancies">
+      <EntityTypeMapping TypeName="SpartanHotelsModel.RoomOccupancy">
+        <MappingFragment StoreEntitySet="RoomOccupancy">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="RoomNumber" ColumnName="RoomNumber" />
+          <ScalarProperty Name="ForDate" ColumnName="ForDate" />
+          <ScalarProperty Name="RoomTypeAccessabilityID" ColumnName="RoomTypeDetailID" />
+          <ScalarProperty Name="OccupiedAt" ColumnName="OccupiedAt" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="ReservationID" ColumnName="ReservationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoomTypeAccessabilities">
+      <EntityTypeMapping TypeName="SpartanHotelsModel.RoomTypeAccessability">
+        <MappingFragment StoreEntitySet="RoomTypeAccessability">
+          <ScalarProperty Name="RoomTypeAccessabilityID" ColumnName="RoomTypeAccessabilityID" />
+          <ScalarProperty Name="RoomTypeID" ColumnName="RoomTypeID" />
+          <ScalarProperty Name="NoOfRooms" ColumnName="NoOfRooms" />
+          <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+          <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoomTypeAvailabilities">
+      <EntityTypeMapping TypeName="SpartanHotelsModel.RoomTypeAvailability">
+        <MappingFragment StoreEntitySet="RoomTypeAvailability">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="RoomTypeAccessabilityID" ColumnName="RoomTypeDetailsID" />
+          <ScalarProperty Name="ForDate" ColumnName="ForDate" />
+          <ScalarProperty Name="NoOfRoomBlocked" ColumnName="NoOfRoomBlocked" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoomTypePrices">
+      <EntityTypeMapping TypeName="SpartanHotelsModel.RoomTypePrice">
+        <MappingFragment StoreEntitySet="RoomTypePrice">
+          <ScalarProperty Name="RoomTypePriceId" ColumnName="RoomTypePriceId" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+          <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+          <ScalarProperty Name="RoomTypeId" ColumnName="RoomTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoomTypes">
+      <EntityTypeMapping TypeName="SpartanHotelsModel.RoomType">
+        <MappingFragment StoreEntitySet="RoomTypes">
+          <ScalarProperty Name="RoomTypeID" ColumnName="RoomTypeID" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+          <ScalarProperty Name="BranchId" ColumnName="BranchId" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="Facilities" ColumnName="Facilities" />
+          <ScalarProperty Name="MaxAdults" ColumnName="MaxAdults" />
+          <ScalarProperty Name="MaxChildren" ColumnName="MaxChildren" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

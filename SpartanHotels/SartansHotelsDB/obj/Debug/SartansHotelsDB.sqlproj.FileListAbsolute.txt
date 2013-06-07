@@ -1,0 +1,16 @@
+E:\01-Projects\SpartanHotels\SartansHotelsDB\bin\Debug\SartansHotelsDB.dacpac
+E:\01-Projects\SpartanHotels\SartansHotelsDB\bin\Debug\SartansHotelsDB_Create.sql
+E:\01-Projects\SpartanHotels\SartansHotelsDB\bin\Debug\SartansHotelsDB.dll
+E:\01-Projects\SpartanHotels\SartansHotelsDB\bin\Debug\SartansHotelsDB.pdb
+E:\01-Projects\SpartanHotels\SartansHotelsDB\obj\Debug\SartansHotelsDB.dll
+E:\01-Projects\SpartanHotels\SartansHotelsDB\obj\Debug\SartansHotelsDB.pdb
+E:\GIT\ArchitectureWorkshop3\SpartanHotels\SartansHotelsDB\bin\Debug\SartansHotelsDB.dacpac
+E:\GIT\ArchitectureWorkshop3\SpartanHotels\SartansHotelsDB\bin\Debug\SartansHotelsDB_Create.sql
+E:\GIT\ArchitectureWorkshop3\SpartanHotels\SartansHotelsDB\bin\Debug\SartansHotelsDB.dll
+E:\GIT\ArchitectureWorkshop3\SpartanHotels\SartansHotelsDB\bin\Debug\SartansHotelsDB.pdb
+E:\GIT\ArchitectureWorkshop3\SpartanHotels\SartansHotelsDB\obj\Debug\SartansHotelsDB.dll
+E:\GIT\ArchitectureWorkshop3\SpartanHotels\SartansHotelsDB\obj\Debug\SartansHotelsDB.pdb
+E:\GIT\ArchitectureWorkshop3\SpartanHotels\SartansHotelsDB\obj\Debug\Model.xml
+E:\GIT\ArchitectureWorkshop3\SpartanHotels\SartansHotelsDB\obj\Debug\refactor.xml
+E:\GIT\ArchitectureWorkshop3\SpartanHotels\SartansHotelsDB\obj\Debug\postdeploy.sql
+E:\GIT\ArchitectureWorkshop3\SpartanHotels\SartansHotelsDB\obj\Debug\predeploy.sql

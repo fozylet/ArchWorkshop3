@@ -1,0 +1,32 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[Customer] (Table)
+       [dbo].[HotelBranches] (Table)
+       [dbo].[HotelPartners] (Table)
+       [dbo].[Reservation] (Table)
+       [dbo].[RoomOccupancy] (Table)
+       [dbo].[RoomTypeAccessability] (Table)
+       [dbo].[RoomTypeAvailability] (Table)
+       [dbo].[RoomTypePrice] (Table)
+       [dbo].[RoomTypes] (Table)
+       [dbo].[FK_HotelPartners_HotelBranches] (Foreign Key)
+       [dbo].[FK_Reservation_Customer] (Foreign Key)
+       [dbo].[FK_Reservation_RoomTypeAccessability] (Foreign Key)
+       [dbo].[FK_RoomOccupancy_Reservation] (Foreign Key)
+       [dbo].[FK_Rooms_RoomTypeDetails] (Foreign Key)
+       [dbo].[FK_RoomTypeDetails_RoomTypes] (Foreign Key)
+       [dbo].[FK_RoomTypeAvailability_RoomTypeDetails] (Foreign Key)
+       [dbo].[FK_RoomTypePrice_RoomTypes] (Foreign Key)
+       [dbo].[FK_RoomTypes_HotelBranches] (Foreign Key)
+
+** Supporting actions

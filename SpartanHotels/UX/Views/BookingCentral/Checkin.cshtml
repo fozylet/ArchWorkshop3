@@ -1,0 +1,33 @@
+﻿@model UX.Models.CheckinDetails
+
+@{
+    ViewBag.Title = "Check In";
+}
+
+<h2>Check In</h2>
+
+<fieldset>
+    <legend>Check in Confirmation</legend>
+     Welcome ! Enjoy your stay!
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.ReservationId)  :   
+        @Html.DisplayFor(model => model.ReservationId)
+    </div>
+    <div class="display-field">
+        @Html.DisplayNameFor(model => model.RoomNumber)  :   
+        @Html.DisplayFor(model => model.RoomNumber)
+    </div>
+
+
+</fieldset>
+<p>
+   
+    <br />
+    @if (Model.IsUpgraded)
+    {
+        <p>You are lucky. We have upgraded your room to a upper class!</p> <br />
+    }
+
+
+    @Html.ActionLink("Back to List", "CheckinList")
+</p>

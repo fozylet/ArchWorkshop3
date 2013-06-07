@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SartansHotelsDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="SartansHotelsDBEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="HotelBranches" EntityType="SartansHotelsDBModel.HotelBranch" />
+  </EntityContainer>
+  <EntityType Name="HotelBranch">
+    <Key>
+      <PropertyRef Name="BranchId" />
+    </Key>
+    <Property Name="BranchId" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+    <Property Name="Details" Type="String" MaxLength="3000" Unicode="true" FixedLength="false" />
+    <Property Name="City" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="Address" Type="String" MaxLength="1000" Unicode="true" FixedLength="false" />
+  </EntityType>
+</Schema>

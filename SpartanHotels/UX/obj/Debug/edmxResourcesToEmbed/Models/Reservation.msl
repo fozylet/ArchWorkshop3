@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SartansHotelsDBModel1StoreContainer" CdmEntityContainer="SartansHotelsDBEntities1">
+    <EntitySetMapping Name="Reservations">
+      <EntityTypeMapping TypeName="SartansHotelsDBModel1.Reservation">
+        <MappingFragment StoreEntitySet="Reservation">
+          <ScalarProperty Name="ReservationID" ColumnName="ReservationID" />
+          <ScalarProperty Name="ReservationNumber" ColumnName="ReservationNumber" />
+          <ScalarProperty Name="FromDate" ColumnName="FromDate" />
+          <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="RoomTypeID" ColumnName="RoomTypeID" />
+          <ScalarProperty Name="PaymentMode" ColumnName="PaymentMode" />
+          <ScalarProperty Name="PaymentSuccess" ColumnName="PaymentSuccess" />
+          <ScalarProperty Name="CancellationStatus" ColumnName="CancellationStatus" />
+          <ScalarProperty Name="CancelledAt" ColumnName="CancelledAt" />
+          <ScalarProperty Name="CancellationRemarks" ColumnName="CancellationRemarks" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
